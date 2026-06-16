@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Convert Bank Statement to Excel — Step by Step Guide | StatementExcel</title>
+  <meta name="description" content="Step-by-step guide on how to convert a bank statement PDF to Excel or CSV. Learn how our AI-powered converter works and get tips for best results.">
+  <meta name="keywords" content="how to convert bank statement to excel, bank statement pdf to spreadsheet guide, convert bank statement step by step, bank statement to csv tutorial">
+  <link rel="canonical" href="https://yourdomain.com/pages/how-it-works.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/vars.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-93N4WFXYE1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-93N4WFXYE1');
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="hero" style="padding:2rem 0 1.75rem">
+  <div class="container">
+    <h1>How to Convert a Bank Statement to Excel</h1>
+    <p>A complete guide to converting your PDF bank statements into clean, usable spreadsheets.</p>
+  </div>
+</section>
+
+<main class="main-content">
+  <div class="container">
+    <div class="ad-slot ad-leaderboard">Advertisement</div>
+
+    <article class="prose">
+
+      <h2>Step-by-Step: Converting Your Bank Statement</h2>
+
+      <div class="steps" style="margin-bottom:2rem">
+        <div class="step"><div class="step-num">1</div><h3>Download Statement</h3><p>Log into your bank and download your statement as a PDF</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Upload Here</h3><p>Drop the PDF on our converter tool on the home page</p></div>
+        <div class="step"><div class="step-num">3</div><h3>AI Extracts</h3><p>Claude AI reads every transaction automatically</p></div>
+        <div class="step"><div class="step-num">4</div><h3>Download CSV</h3><p>Get your clean spreadsheet file instantly</p></div>
+      </div>
+
+      <h2>Step 1: Download Your Bank Statement PDF</h2>
+      <p>Log into your online banking portal and navigate to the Statements or Documents section. Download a monthly or quarterly statement as a PDF. Almost all major banks offer this feature.</p>
+
+      <div class="callout callout-blue">
+        <strong>Tip:</strong> Download the PDF directly from your bank's website rather than printing to PDF from a browser. Bank-generated PDFs are text-based and work perfectly. Browser-printed PDFs are sometimes image-based and cannot be parsed.
+      </div>
+
+      <h2>Step 2: Get Your API Key</h2>
+      <p>StatementExcel uses the Claude AI API to read your statement. You'll need a free API key:</p>
+      <ol>
+        <li>Visit <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></li>
+        <li>Sign up for a free account</li>
+        <li>Go to <strong>API Keys</strong> and create a new key</li>
+        <li>Copy the key and paste it into the API Key field on the converter</li>
+      </ol>
+      <p>Your API key is saved locally in your browser — you only need to enter it once. Anthropic provides free API credits to new users, enough to convert dozens of statements.</p>
+
+      <h2>Step 3: Upload and Convert</h2>
+      <p>Drag your PDF onto the upload area or click to browse. Then click <strong>Convert to Excel</strong>. The AI will read your statement and extract all transactions — typically in 15–45 seconds depending on statement length.</p>
+
+      <h2>Step 4: Review and Download</h2>
+      <p>Once complete, you'll see a table of all extracted transactions with:</p>
+      <ul>
+        <li><strong>Date</strong> — transaction date</li>
+        <li><strong>Description</strong> — merchant or transfer description</li>
+        <li><strong>Amount</strong> — positive for credits, negative for debits</li>
+        <li><strong>Balance</strong> — account balance after transaction (if available)</li>
+        <li><strong>Type</strong> — debit or credit</li>
+        <li><strong>Category</strong> — auto-assigned category (Groceries, Utilities, Salary, etc.)</li>
+      </ul>
+      <p>Click <strong>Download CSV</strong> to save the spreadsheet to your computer.</p>
+
+      <h2>Opening the CSV in Microsoft Excel</h2>
+      <ol>
+        <li>Open Excel</li>
+        <li>Go to <strong>File → Open</strong> and select your downloaded CSV</li>
+        <li>Or simply double-click the .csv file — it opens in Excel by default on most systems</li>
+        <li>All columns will be correctly populated and ready to use</li>
+      </ol>
+
+      <div class="callout callout-green">
+        <strong>Pro Tip:</strong> In Excel, go to <strong>Data → From Text/CSV</strong> if the file doesn't open correctly. Select "Comma" as the delimiter and "UTF-8" encoding.
+      </div>
+
+      <h2>Opening in Google Sheets</h2>
+      <ol>
+        <li>Open <a href="https://sheets.google.com" target="_blank" rel="noopener">Google Sheets</a></li>
+        <li>Go to <strong>File → Import</strong></li>
+        <li>Upload the CSV file</li>
+        <li>Select "Comma" as separator type</li>
+        <li>Click <strong>Import data</strong></li>
+      </ol>
+
+      <h2>What Happens to My Data?</h2>
+      <p>Your PDF is sent directly from your browser to the Anthropic Claude API using your personal API key. It is not stored by StatementExcel — we never see your data. Anthropic's API processes your document and returns the structured transaction data, then discards the input according to their data retention policies.</p>
+
+      <div class="callout callout-yellow">
+        <strong>Privacy Note:</strong> Review Anthropic's privacy policy at <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a> for information on how API inputs are handled. For maximum privacy, consider using a statement with personal information redacted for testing.
+      </div>
+
+      <h2>Troubleshooting</h2>
+
+      <h3>The conversion returned 0 transactions</h3>
+      <p>Your PDF may be image-based (scanned) rather than text-based. Open the PDF and try to select/highlight text — if you can't, it's image-based. Contact your bank for a text-based digital PDF or request e-statements.</p>
+
+      <h3>Some transactions are missing or incorrect</h3>
+      <p>AI extraction is highly accurate but not perfect. Review the results against your original statement and correct any errors in Excel before using the data. Unusual formatting or non-standard statement layouts may cause occasional errors.</p>
+
+      <h3>I'm getting an API error</h3>
+      <p>Check that your API key is correct and that you have credits remaining in your Anthropic account. Very large PDFs (100+ pages) may hit token limits — try converting one month at a time.</p>
+
+    </article>
+
+    <div class="ad-slot ad-banner">Advertisement</div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+</body>
+</html>
