@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | StatementExcel</title>
-  <meta name="description" content="StatementExcel terms of service. Free to use for personal and commercial purposes.">
-  <link rel="canonical" href="https://yourdomain.com/pages/terms.html">
+  <title>FAQ — Bank Statement to Excel Converter | StatementExcel</title>
+  <meta name="description" content="Frequently asked questions about StatementExcel. Learn how to convert bank statement PDFs to Excel, which banks are supported, how your data is kept private, and more.">
+  <meta name="keywords" content="bank statement converter FAQ, bank statement to excel questions, pdf to csv help, statementexcel faq, bank statement converter how it works">
+  <link rel="canonical" href="https://yourdomain.com/pages/faq.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,44 +25,129 @@
 </head>
 <body>
 <div id="site-header"></div>
-<section class="hero" style="padding:2rem 0"><div class="container"><h1>Terms of Service</h1><p>Last updated: June 2025</p></div></section>
+
+<section class="hero" style="padding:2rem 0 1.75rem">
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about converting bank statements to Excel.</p>
+  </div>
+</section>
+
 <main class="main-content">
   <div class="container">
+
+    <div class="ad-slot ad-leaderboard">Advertisement</div>
+
     <div class="tool-card" style="padding:2rem 2.5rem;max-width:720px;margin:0 auto">
       <article class="prose">
-        <h2>1. Acceptance</h2>
-        <p>By using StatementExcel you agree to these Terms. If you do not agree, do not use the Service.</p>
 
-        <h2>2. Description</h2>
-        <p>StatementExcel provides a free browser-based tool to convert bank statement PDFs to Excel/CSV format using the Anthropic Claude AI API.</p>
+        <h2>General</h2>
 
-        <h2>3. Your Responsibilities</h2>
-        <ul>
-          <li>You must have the legal right to process any documents you upload</li>
-          <li>You are responsible for the security of your own Claude API key</li>
-          <li>You must not use the Service for any unlawful purpose</li>
-          <li>You must not attempt to reverse engineer or abuse the Service</li>
-        </ul>
+        <div class="faq-item">
+          <div class="faq-q">What is StatementExcel?</div>
+          <div class="faq-a"><p>StatementExcel is a free browser-based tool that converts bank statement PDFs into clean Excel or CSV spreadsheets using AI. It works with any bank, requires no sign-up, and your files never leave your device.</p></div>
+        </div>
 
-        <h2>4. Financial Data Disclaimer</h2>
-        <p>StatementExcel is a convenience tool only. We make no guarantees about the accuracy or completeness of extracted transaction data. Always verify extracted data against your original bank statements before using it for financial, tax, or legal purposes.</p>
-        <p>Statements longer than approximately 40 pages may be partially processed or fail entirely due to AI processing limits. Split longer documents into monthly or quarterly segments and convert each separately.</p>
+        <div class="faq-item">
+          <div class="faq-q">Is it really free?</div>
+          <div class="faq-a"><p>Yes — StatementExcel itself is completely free. The only cost is the Claude AI API usage billed directly to your Anthropic account. New Anthropic accounts receive free credits worth roughly $5–10, enough to convert dozens of statements.</p></div>
+        </div>
 
-        <h2>5. API Costs</h2>
-        <p>The Claude API costs are billed directly by Anthropic to your account. StatementExcel has no control over and is not responsible for Anthropic's pricing or billing.</p>
+        <div class="faq-item">
+          <div class="faq-q">Do I need to create an account?</div>
+          <div class="faq-a"><p>No account is needed for StatementExcel. You only need a free Claude API key from <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>, which is saved locally in your browser.</p></div>
+        </div>
 
-        <h2>6. No Warranty</h2>
-        <p>The Service is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service or error-free extraction results.</p>
+        <div class="faq-item">
+          <div class="faq-q">Which banks are supported?</div>
+          <div class="faq-a"><p>All banks that produce text-based PDF statements are supported — Chase, Bank of America, Wells Fargo, Barclays, ANZ, CommBank, and hundreds more worldwide. See the full <a href="banks.html">supported banks list</a>. If your bank isn't listed it almost certainly still works.</p></div>
+        </div>
 
-        <h2>7. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by law, StatementExcel shall not be liable for any indirect, incidental, or consequential damages arising from use of the Service, including any financial decisions made based on extracted data.</p>
+        <h2 style="margin-top:1.75rem">Privacy &amp; Security</h2>
 
-        <h2>8. Changes</h2>
-        <p>We may modify these Terms at any time. Continued use of the Service constitutes acceptance of updated Terms.</p>
+        <div class="faq-item">
+          <div class="faq-q">Is my financial data safe?</div>
+          <div class="faq-a"><p>Yes. Your PDF is sent directly from your browser to the Anthropic Claude API using your personal API key. StatementExcel never receives, stores, or logs your financial data at any point. We have no server that touches your files.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Where is my API key stored?</div>
+          <div class="faq-a"><p>Your Claude API key is stored only in your browser's localStorage. It is never sent to StatementExcel servers — only to Anthropic directly when making API calls.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Does Anthropic store my bank statement?</div>
+          <div class="faq-a"><p>Anthropic processes your document via their API and discards it according to their data retention policies. Review <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a> for full details.</p></div>
+        </div>
+
+        <h2 style="margin-top:1.75rem">Using the Tool</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">What file types are supported?</div>
+          <div class="faq-a"><p>Text-based PDF files (.pdf) and plain text files (.txt). Most e-statements downloaded directly from your bank's online portal are text-based and will work correctly.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Why did my conversion return 0 transactions?</div>
+          <div class="faq-a"><p>Your PDF is likely image-based (scanned) rather than text-based. Try selecting text in the PDF — if you can't highlight any, it's a scanned image. Contact your bank and request a digital e-statement instead.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How long does conversion take?</div>
+          <div class="faq-a"><p>Typically 15–45 seconds depending on statement length and Anthropic API response time. Longer statements with many transactions may take up to 90 seconds.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What is the maximum statement length?</div>
+          <div class="faq-a"><p>Statements up to approximately 40 pages work reliably. Longer statements may hit API token limits — split them into monthly segments and convert each separately.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What are the 4 Excel layouts?</div>
+          <div class="faq-a">
+            <ul>
+              <li><strong>Standard</strong> — Single amount column with +/- signs. Best for most users.</li>
+              <li><strong>Split Columns</strong> — Separate Withdrawals and Deposits columns (Chase style).</li>
+              <li><strong>Accountant View</strong> — Absolute values with DR/CR labels, running balance. Ideal for bookkeeping.</li>
+              <li><strong>Minimal Clean</strong> — Date, description, amount only. Best for importing into other tools.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I get an Excel .xlsx file instead of CSV?</div>
+          <div class="faq-a"><p>The download is a CSV file, which opens directly in Microsoft Excel, Google Sheets, and Numbers. CSV is universally compatible with all spreadsheet software. Simply double-click the file to open it in Excel.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Some transactions are missing or wrong — what do I do?</div>
+          <div class="faq-a"><p>AI extraction achieves 95%+ accuracy but is not perfect. Always verify the extracted data against your original statement before using it for financial or tax purposes. Unusual statement layouts may occasionally cause errors.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">I am getting an API error — how do I fix it?</div>
+          <div class="faq-a">
+            <ul>
+              <li>Check your API key is correct and starts with <code>sk-ant-</code></li>
+              <li>Check you have credits remaining at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></li>
+              <li>Try a shorter statement if the file is very large</li>
+              <li>Wait a moment and try again — occasional API timeouts resolve themselves</li>
+            </ul>
+          </div>
+        </div>
+
       </article>
     </div>
+
+    <div style="text-align:center;margin:2rem 0">
+      <a href="../index.html" class="btn btn-primary" style="font-size:1rem;padding:.8rem 2rem">Convert Your Statement Now</a>
+    </div>
+
+    <div class="ad-slot ad-banner">Advertisement</div>
+
   </div>
 </main>
+
 <div id="site-footer"></div>
 <script src="../js/utils.js"></script>
 <script src="../js/layout.js"></script>
