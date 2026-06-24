@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Bank Statement Into Excel — Step-by-Step Guide | StatementExcel</title>
+  <meta name="description" content="How to import a bank statement into Excel. Step-by-step guide for importing PDF bank statements, CSV files, and OFX files into Microsoft Excel. Free tool included.">
+  <meta name="keywords" content="import bank statement into excel, how to import bank statement into excel, bank statement import excel, bank statement excel import">
+  <link rel="canonical" href="https://statementexcel.com/seo/import-bank-statement-into-excel.html">
+  <meta property="og:title" content="How to Import a Bank Statement into Excel">
+  <meta property="og:description" content="Step-by-step guide to importing bank statement PDFs and CSV files into Microsoft Excel. Free AI converter included.">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Import a Bank Statement into Excel",
+    "description": "Step-by-step guide to importing bank statement PDFs and CSV files into Microsoft Excel.",
+    "url": "https://statementexcel.com/seo/import-bank-statement-into-excel.html",
+    "step": [
+      { "@type": "HowToStep", "name": "Download your bank statement as PDF", "text": "Log into your bank's online portal and download your statement as a text-based PDF." },
+      { "@type": "HowToStep", "name": "Convert PDF to CSV", "text": "Use StatementExcel to convert the PDF to a CSV file with properly structured columns." },
+      { "@type": "HowToStep", "name": "Open the CSV in Excel", "text": "Open Excel, go to File → Open, and select the CSV file. Choose UTF-8 encoding if prompted." },
+      { "@type": "HowToStep", "name": "Format and filter", "text": "Use Excel's Data → Filter, PivotTables, and charts to analyze your transactions." }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/vars.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93N4WFXYE1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-93N4WFXYE1');</script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="hero" style="padding:2.5rem 0 2rem">
+  <div class="container">
+    <div class="hero-badge">📊 Excel Import Guide</div>
+    <h1>How to Import a Bank Statement into Excel</h1>
+    <p>The complete guide to getting your bank statement data into Microsoft Excel — from PDF to fully structured spreadsheet in minutes.</p>
+    <div style="margin-top:1.5rem">
+      <a href="../index.html" class="btn btn-primary" style="font-size:1.05rem;padding:.75rem 2rem">⚡ Convert PDF to Excel Now →</a>
+    </div>
+  </div>
+</section>
+
+<main class="main-content">
+  <div class="container">
+
+    <div class="ad-slot ad-leaderboard">Advertisement</div>
+
+    <article class="prose">
+
+      <h2>The 3 Ways to Get Bank Statement Data into Excel</h2>
+      <p>There are three common methods for importing bank statements into Excel, each with different trade-offs:</p>
+
+      <table>
+        <thead><tr><th>Method</th><th>Works With</th><th>Effort</th><th>Accuracy</th></tr></thead>
+        <tbody>
+          <tr><td><strong>AI Converter (this tool)</strong></td><td>PDF statements</td><td>30 seconds</td><td>95%+</td></tr>
+          <tr><td><strong>Excel Power Query</strong></td><td>Structured PDF tables only</td><td>5–15 min setup</td><td>60–80%</td></tr>
+          <tr><td><strong>Manual copy-paste</strong></td><td>Any format</td><td>Hours</td><td>100%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-blue">
+        <strong>Fastest method:</strong> Use StatementExcel to convert your PDF to CSV, then open the CSV in Excel. Total time: under 2 minutes. <a href="../index.html">Try it free →</a>
+      </div>
+
+      <h2>Method 1: Convert PDF to CSV First (Recommended)</h2>
+
+      <h3>Step 1: Download your statement as a PDF</h3>
+      <p>Log into your bank's online banking portal. Navigate to Statements or Documents. Download your statement as a PDF (not a printed/scanned copy). Most banks label this "e-Statement" or "PDF Statement".</p>
+
+      <h3>Step 2: Convert to CSV with StatementExcel</h3>
+      <p>Upload your PDF to <a href="../index.html">StatementExcel</a>. Enter your Claude API key (free from <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>). Click Convert. In 10–30 seconds you'll see a live preview of all your transactions.</p>
+
+      <h3>Step 3: Choose your layout and download</h3>
+      <p>Pick from four Excel layouts — Standard, Split Columns, Accountant, or Minimal — and customize which columns appear. Then click Download CSV.</p>
+
+      <h3>Step 4: Open CSV in Excel</h3>
+      <ol>
+        <li>Double-click the downloaded CSV file, or open Excel and go to <strong>File → Open</strong></li>
+        <li>If the Text Import Wizard appears: select Delimited → Comma → Finish</li>
+        <li>Your transactions are now in a proper Excel table</li>
+        <li>Select all data and press <strong>Ctrl+T</strong> to format as an Excel Table for easier filtering</li>
+      </ol>
+
+      <h2>Method 2: Excel Power Query (PDF Tables)</h2>
+      <p>Excel's built-in Power Query can sometimes import PDF tables directly — but only if the PDF has a clean table structure. Most bank statement PDFs do not have clean tables, making this unreliable. If you want to try it:</p>
+      <ol>
+        <li>In Excel, go to <strong>Data → Get Data → From File → From PDF</strong></li>
+        <li>Select your bank statement PDF</li>
+        <li>Power Query shows detected tables — select the transaction table</li>
+        <li>Click Transform Data to clean up columns, then Load</li>
+      </ol>
+      <p>This works for some statements but often requires significant cleanup. The AI converter is far more reliable.</p>
+
+      <h2>Analyzing Your Bank Statement in Excel</h2>
+      <p>Once imported, you can use Excel's built-in tools:</p>
+      <ul>
+        <li><strong>Data → Filter:</strong> Filter by category (Groceries, Dining, etc.) or amount range</li>
+        <li><strong>Insert → PivotTable:</strong> Summarize total spending by category or month</li>
+        <li><strong>Insert → Chart:</strong> Visualize spending patterns over time</li>
+        <li><strong>Formulas:</strong> Use SUMIF to total by category, or AVERAGEIF for average transaction sizes</li>
+      </ul>
+
+      <div class="callout callout-green">
+        <strong>Pro tip:</strong> In Excel, select your transaction data and press <strong>Ctrl+T</strong> to create a formatted Table. This enables auto-filtering on every column and makes PivotTables much easier to build.
+      </div>
+
+      <h2>Common Problems When Importing Bank Statements to Excel</h2>
+
+      <h3>Amounts showing as text instead of numbers</h3>
+      <p>Select the Amount column, go to Data → Text to Columns → Delimited → Finish. This forces Excel to re-parse the column as numbers.</p>
+
+      <h3>Dates not recognized as dates</h3>
+      <p>Select the Date column, right-click → Format Cells → Date, and choose your preferred date format. If dates still show as text, use the DATEVALUE() formula to convert them.</p>
+
+      <h3>Characters showing as ??? or garbled</h3>
+      <p>This is an encoding issue. When opening the CSV, make sure to select UTF-8 encoding in the Text Import Wizard. StatementExcel includes a BOM character that usually handles this automatically.</p>
+
+      <div class="callout callout-yellow">
+        <strong>Remember:</strong> StatementExcel only works with text-based PDFs from online banking portals. Scanned paper statements are image-based and cannot be parsed. Check our <a href="../pages/faq.html">FAQ</a> for more.
+      </div>
+
+    </article>
+
+    <div class="ad-slot ad-banner">Advertisement</div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+</body>
+</html>

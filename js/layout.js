@@ -1,15 +1,5 @@
 (function () {
-  var pages = [
-    { href: '../index.html',        label: 'Converter' },
-    { href: '../pages/how-it-works.html', label: 'How It Works' },
-    { href: '../pages/faq.html',    label: 'FAQ' },
-    { href: '../pages/banks.html',  label: 'Supported Banks' },
-  ];
-
-  function depth() {
-    var p = location.pathname;
-    return (p.match(/\//g) || []).length;
-  }
+  'use strict';
 
   function prefix() {
     return location.pathname.includes('/pages/') ? '../' : '';
@@ -20,16 +10,18 @@
   }
 
   function buildHeader() {
-    var cur  = currentFile();
-    var pre  = prefix();
-    var links = [
+    var cur = currentFile();
+    var pre = prefix();
+    var navItems = [
       { href: pre + 'index.html',              label: 'Converter' },
       { href: pre + 'pages/how-it-works.html', label: 'How It Works' },
       { href: pre + 'pages/faq.html',          label: 'FAQ' },
       { href: pre + 'pages/banks.html',        label: 'Banks' },
-    ].map(function (p) {
-      var active = location.pathname.endsWith(p.href.replace(/^\.\.\//, '').replace(/^\//, ''));
-      var cls = (cur === p.href.split('/').pop()) ? ' class="active"' : '';
+    ];
+
+    var links = navItems.map(function (p) {
+      var targetFile = p.href.split('/').pop();
+      var cls = (cur === targetFile) ? ' class="active"' : '';
       return '<a href="' + p.href + '"' + cls + '>' + p.label + '</a>';
     }).join('');
 
@@ -46,6 +38,7 @@
       + '</svg>'
       + 'Statement<span class="logo-dot">Excel</span></a>'
       + '<nav class="site-nav">' + links + '</nav>'
+      + '<button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>'
       + '</div></header>';
   }
 
@@ -67,6 +60,17 @@
     var f = document.getElementById('site-footer');
     if (h) h.outerHTML = buildHeader();
     if (f) f.outerHTML = buildFooter();
+
+    // Mobile nav toggle (bind after outerHTML replacement)
+    setTimeout(function () {
+      var toggle = document.getElementById('nav-toggle');
+      var nav    = document.querySelector('.site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          nav.classList.toggle('open');
+        });
+      }
+    }, 0);
 
     // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(function (q) {

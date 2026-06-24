@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,11 +6,34 @@
   <title>Bank Statement to Excel Converter — Free Online Tool | StatementExcel</title>
   <meta name="description" content="Convert bank statement PDF to Excel or CSV in seconds. Free online bank statement converter powered by AI. Works with any bank — no uploads to our servers, 100% private.">
   <meta name="keywords" content="bank statement to excel converter, convert bank statement pdf to excel, bank statement converter online free, pdf bank statement to spreadsheet, import bank statement into excel, bank statement csv converter">
-  <link rel="canonical" href="https://yourdomain.com/">
+  <link rel="canonical" href="https://statementexcel.com/">
   <meta property="og:title" content="Bank Statement to Excel Converter | StatementExcel">
   <meta property="og:description" content="Convert any bank statement PDF to Excel or CSV instantly. AI-powered, works with all banks, 100% private.">
   <meta property="og:type" content="website">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"StatementExcel","description":"Free online tool to convert bank statement PDFs to Excel or CSV format.","url":"https://yourdomain.com/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <meta property="og:url" content="https://statementexcel.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bank Statement to Excel Converter | StatementExcel">
+  <meta name="twitter:description" content="Convert any bank statement PDF to Excel or CSV instantly. AI-powered, works with all banks, 100% private.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StatementExcel",
+    "description": "Free online tool to convert bank statement PDFs to Excel or CSV format using AI.",
+    "url": "https://statementexcel.com/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": [
+      "PDF bank statement to Excel conversion",
+      "AI-powered transaction extraction",
+      "4 Excel layout options",
+      "CSV and JSON export",
+      "Works with any bank",
+      "Files are never stored on our servers"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,124 +43,33 @@
   <link rel="stylesheet" href="css/components.css">
   <style>
     /* ── LAYOUT PICKER ── */
-    .layout-section {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      margin-bottom: 1.25rem;
-    }
-    .layout-section-header {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: .65rem 1.25rem;
-      font-weight: 700;
-      font-size: .88rem;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-    .layout-picker {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .65rem;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .layout-btn {
-      display: flex;
-      flex-direction: column;
-      gap: .25rem;
-      padding: .6rem 1rem;
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg-white);
-      cursor: pointer;
-      font-family: var(--font);
-      transition: all .15s;
-      position: relative;
-      min-width: 130px;
-    }
-    .layout-btn:hover { border-color: var(--primary); background: var(--primary-light); }
-    .layout-btn.active { border-color: var(--primary); background: var(--primary-light); }
-    .layout-btn .lb-name { font-weight: 700; font-size: .88rem; color: var(--text-primary); }
-    .layout-btn .lb-sub  { font-size: .75rem; color: var(--text-muted); }
-    .layout-btn .lb-badge {
-      position: absolute; top: .4rem; right: .5rem;
-      font-size: .65rem; font-weight: 700;
-      background: var(--accent); color: #fff;
-      padding: .1rem .38rem; border-radius: 999px;
-    }
-    .layout-btn.active .lb-name { color: var(--primary-dark); }
-
-    /* ── CUSTOMISER PANEL ── */
-    .customiser {
-      padding: 1rem 1.25rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem 2rem;
-    }
-    @media (max-width: 700px) { .customiser { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .customiser { grid-template-columns: 1fr; } }
-    .cust-group { display: flex; flex-direction: column; gap: .1rem; }
-    .cust-group-title {
-      font-size: .72rem; text-transform: uppercase; letter-spacing: .07em;
-      color: var(--text-muted); font-weight: 700; margin-bottom: .4rem;
-    }
-    .cust-check {
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .88rem; color: var(--text-secondary); cursor: pointer; padding: .15rem 0;
-    }
-    .cust-check input[type="checkbox"] { accent-color: var(--primary); width: 15px; height: 15px; cursor: pointer; }
-    .cust-radio {
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .88rem; color: var(--text-secondary); cursor: pointer; padding: .15rem 0;
-    }
-    .cust-radio input[type="radio"] { accent-color: var(--primary); width: 15px; height: 15px; cursor: pointer; }
-
-    /* ── LAYOUT PREVIEW HEADER ── */
-    .preview-header {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .6rem 1.25rem;
-      background: var(--primary);
-      color: #fff;
-      font-size: .82rem;
-      font-weight: 600;
-    }
-    .preview-header .ph-icon { opacity: .85; }
-    .preview-label { font-size: .78rem; opacity: .8; margin-left: auto; }
-    .preview-tabs {
-      display: flex; gap: 0;
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.25rem;
-      background: var(--bg-white);
-    }
-    .preview-tab {
-      padding: .5rem 1rem; font-size: .85rem; font-weight: 500;
-      color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent;
-      transition: all .15s;
-    }
-    .preview-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-
-    /* ── RESULT ACTIONS ENHANCED ── */
-    .result-dl-row {
-      display: flex; align-items: center; gap: .65rem;
-      padding: .75rem 1.25rem;
-      border-top: 1px solid var(--border);
-      background: var(--bg);
-      flex-wrap: wrap;
-    }
-    .result-dl-label { font-size: .82rem; color: var(--text-muted); font-weight: 600; }
+    .layout-section { background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.25rem; }
+    .layout-section-header { background:var(--bg);border-bottom:1px solid var(--border);padding:.65rem 1.25rem;font-weight:700;font-size:.88rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em; }
+    .layout-picker { display:flex;flex-wrap:wrap;gap:.65rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border); }
+    .layout-btn { display:flex;flex-direction:column;gap:.25rem;padding:.6rem 1rem;border:2px solid var(--border);border-radius:var(--radius);background:var(--bg-white);cursor:pointer;font-family:var(--font);transition:all .15s;position:relative;min-width:130px; }
+    .layout-btn:hover,.layout-btn.active { border-color:var(--primary);background:var(--primary-light); }
+    .layout-btn .lb-name { font-weight:700;font-size:.88rem;color:var(--text-primary); }
+    .layout-btn .lb-sub { font-size:.75rem;color:var(--text-muted); }
+    .layout-btn .lb-badge { position:absolute;top:.4rem;right:.5rem;font-size:.65rem;font-weight:700;background:var(--accent);color:#fff;padding:.1rem .38rem;border-radius:999px; }
+    .layout-btn.active .lb-name { color:var(--primary-dark); }
+    /* ── CUSTOMISER ── */
+    .customiser { padding:1rem 1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem 2rem; }
+    @media(max-width:700px){.customiser{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.customiser{grid-template-columns:1fr;}}
+    .cust-group { display:flex;flex-direction:column;gap:.1rem; }
+    .cust-group-title { font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);font-weight:700;margin-bottom:.4rem; }
+    .cust-check,.cust-radio { display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--text-secondary);cursor:pointer;padding:.15rem 0; }
+    .cust-check input[type="checkbox"],.cust-radio input[type="radio"] { accent-color:var(--primary);width:15px;height:15px;cursor:pointer; }
+    /* ── PREVIEW HEADER ── */
+    .preview-header { display:flex;align-items:center;gap:.75rem;padding:.6rem 1.25rem;background:var(--primary);color:#fff;font-size:.82rem;font-weight:600; }
+    .preview-label { font-size:.78rem;opacity:.8;margin-left:auto; }
+    /* ── RESULT ACTIONS ── */
+    .result-dl-row { display:flex;align-items:center;gap:.65rem;padding:.75rem 1.25rem;border-top:1px solid var(--border);background:var(--bg);flex-wrap:wrap; }
+    .result-dl-label { font-size:.82rem;color:var(--text-muted);font-weight:600; }
   </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-93N4WFXYE1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-93N4WFXYE1');
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93N4WFXYE1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-93N4WFXYE1');</script>
 </head>
 <body>
 
@@ -150,7 +82,7 @@
     <h1>Convert Bank Statement PDF to Excel — Free</h1>
     <p>Upload your bank statement PDF and get a clean, customised Excel or CSV file in seconds. Choose your layout, pick your columns, download instantly.</p>
     <div class="hero-trust">
-      <span>🔒 100% Private</span>
+      <span>🔒 Never Stored</span>
       <span>🏦 Any Bank</span>
       <span>⚡ Instant Results</span>
       <span>📊 4 Excel Layouts</span>
@@ -166,7 +98,7 @@
 <main class="main-content">
   <div class="container">
 
-    <!-- HOW IT WORKS STEPS -->
+    <!-- HOW IT WORKS -->
     <div class="steps" style="margin-bottom:1.5rem">
       <div class="step"><div class="step-num">1</div><h3>Upload PDF</h3><p>Drop your bank statement PDF</p></div>
       <div class="step"><div class="step-num">2</div><h3>AI Parses</h3><p>Claude AI extracts every transaction</p></div>
@@ -184,10 +116,10 @@
       <!-- Drop zone -->
       <div class="dropzone-wrap">
         <div class="dropzone" id="dropzone">
-          <input type="file" id="file-input" accept=".pdf,.txt">
+          <input type="file" id="file-input" accept=".pdf,.txt" style="display:none">
           <div class="dz-icon">📂</div>
           <div class="dz-title">Drop your bank statement PDF here</div>
-          <p class="dz-sub">or click to browse &bull; PDF or TXT &bull; Any bank &bull; File stays on your device</p>
+          <p class="dz-sub">or click to browse &bull; PDF or TXT &bull; Any bank &bull; Never stored</p>
         </div>
       </div>
 
@@ -199,13 +131,6 @@
           <div class="file-badge-size" id="badge-size">0 KB</div>
         </div>
         <button class="file-badge-remove" id="badge-remove" title="Remove">✕</button>
-      </div>
-
-      <!-- API Key row -->
-      <div class="api-row">
-        <label for="api-key-input">Claude API Key:</label>
-        <input type="password" class="api-input" id="api-key-input" placeholder="sk-ant-api03-…" autocomplete="off">
-        <span class="api-hint">Get a key at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> — key saved locally in your browser</span>
       </div>
 
       <!-- Controls -->
@@ -226,42 +151,33 @@
 
     </div><!-- /tool-card -->
 
-    <!-- ═══════════════════════════════════════════════ -->
-    <!-- LAYOUT PICKER + CUSTOMISER (shown after parse) -->
-    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LAYOUT PICKER + CUSTOMISER -->
     <div class="layout-section" id="layout-section" style="display:none;margin-top:1.25rem">
 
       <div class="layout-section-header">Choose Excel Layout</div>
 
-      <!-- Layout buttons -->
       <div class="layout-picker">
-
         <button class="layout-btn active" data-layout="standard">
           <span class="lb-name">Layout 1 — Standard</span>
           <span class="lb-sub">All columns, single amount</span>
         </button>
-
         <button class="layout-btn" data-layout="split">
           <span class="lb-name">Layout 2 — Split Columns</span>
           <span class="lb-sub">Withdrawals &amp; deposits separate</span>
           <span class="lb-badge">Chase style</span>
         </button>
-
         <button class="layout-btn" data-layout="accountant">
           <span class="lb-name">Layout 3 — Accountant</span>
           <span class="lb-sub">DR/CR absolute values + running total</span>
         </button>
-
         <button class="layout-btn" data-layout="minimal">
           <span class="lb-name">Layout 4 — Minimal Clean</span>
           <span class="lb-sub">Date, description, amount only</span>
         </button>
-
       </div>
 
       <!-- Column customiser -->
       <div class="customiser">
-
         <div class="cust-group">
           <div class="cust-group-title">Columns to Include</div>
           <label class="cust-check"><input type="checkbox" id="col-ref" checked> Reference / Ref no.</label>
@@ -272,31 +188,28 @@
           <label class="cust-check"><input type="checkbox" id="col-totalsRow" checked> Totals row</label>
           <label class="cust-check"><input type="checkbox" id="col-columnTotals" checked> Show expenses &amp; deposits totals</label>
         </div>
-
         <div class="cust-group">
           <div class="cust-group-title">Amount Display</div>
           <label class="cust-radio"><input type="radio" name="amountDisplay" value="single" checked> Single amount column (+/−)</label>
           <label class="cust-radio"><input type="radio" name="amountDisplay" value="split"> Split: withdrawals &amp; deposits separate</label>
           <label class="cust-radio"><input type="radio" name="amountDisplay" value="absolute"> Absolute value + DR/CR column</label>
         </div>
-
         <div class="cust-group">
           <div class="cust-group-title">Totals Display</div>
           <label class="cust-radio"><input type="radio" name="totalsDisplay" value="footer" checked> Footer totals row</label>
           <label class="cust-radio"><input type="radio" name="totalsDisplay" value="stats"> Summary stats bar</label>
           <label class="cust-radio"><input type="radio" name="totalsDisplay" value="both"> Both</label>
         </div>
-
       </div>
 
       <!-- Live preview header -->
       <div class="preview-header">
-        <span class="ph-icon">📊</span>
+        <span>📊</span>
         <span id="preview-layout-name">Layout 1 — Standard</span>
         <span class="preview-label" id="preview-info">preview</span>
       </div>
 
-      <!-- Results table (preview) -->
+      <!-- Results table -->
       <div class="result-panel" id="result-panel" style="display:none">
         <div class="result-header">
           <span class="result-title">✅ Transactions Extracted</span>
@@ -309,7 +222,7 @@
           </table>
         </div>
 
-        <!-- Summary bar (toggled by radio) -->
+        <!-- Summary bar -->
         <div class="summary-bar" id="summary-bar">
           <div class="sum-item"><span class="sum-label">Transactions</span><span class="sum-value" id="sum-count">0</span></div>
           <div class="sum-item"><span class="sum-label">Total Income</span><span class="sum-value pos" id="sum-income">$0.00</span></div>
@@ -336,36 +249,12 @@
     <!-- FEATURES -->
     <h2 class="section-title" style="margin-bottom:1rem;margin-top:.5rem">Why Use StatementExcel?</h2>
     <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🏦</div>
-        <h3>Works With Any Bank</h3>
-        <p>AI understands statement formats from all banks — big or small, any country.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3>100% Private</h3>
-        <p>Your PDF is sent directly to the AI API — it never touches our servers or gets stored.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎨</div>
-        <h3>4 Excel Layouts</h3>
-        <p>Choose Standard, Split columns (Chase style), Accountant view, or Minimal clean.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚙️</div>
-        <h3>Custom Columns</h3>
-        <p>Pick exactly which columns appear in your spreadsheet — ref, currency, balance, category and more.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Near-Perfect Accuracy</h3>
-        <p>AI-powered extraction achieves 95%+ accuracy versus 60–70% for traditional parsers.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Auto-Categorized</h3>
-        <p>Transactions are automatically categorized — groceries, utilities, salary, and more.</p>
-      </div>
+      <div class="feature-card"><div class="feature-icon">🏦</div><h3>Works With Any Bank</h3><p>AI understands statement formats from all banks — big or small, any country.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔒</div><h3>Never Stored</h3><p>Your PDF is processed instantly and never saved on our servers — it's gone the moment your spreadsheet downloads.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎨</div><h3>4 Excel Layouts</h3><p>Choose Standard, Split columns (Chase style), Accountant view, or Minimal clean.</p></div>
+      <div class="feature-card"><div class="feature-icon">⚙️</div><h3>Custom Columns</h3><p>Pick exactly which columns appear in your spreadsheet — ref, currency, balance, category and more.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎯</div><h3>Near-Perfect Accuracy</h3><p>AI-powered extraction achieves 95%+ accuracy versus 60–70% for traditional parsers.</p></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><h3>Auto-Categorized</h3><p>Transactions are automatically categorized — groceries, utilities, salary, and more.</p></div>
     </div>
 
     <div class="ad-slot ad-banner">Advertisement</div>
@@ -376,34 +265,28 @@
       <p>Converting your bank statement to Excel used to require manual data entry or expensive accounting software. StatementExcel uses AI to automate the process entirely — just upload your PDF, choose your layout, and download a clean spreadsheet.</p>
 
       <div class="callout callout-blue">
-        <strong>How it works:</strong> Your PDF is sent directly to the Claude AI API, which reads the statement and extracts every transaction into a structured format. Choose from 4 Excel layouts and customise which columns appear before downloading as CSV or Excel.
+        <strong>How it works:</strong> Your PDF is processed through our server and the Claude AI API, which reads the statement and extracts every transaction into a structured format — nothing is stored. Choose from 4 Excel layouts and customise which columns appear before downloading as CSV or Excel.
       </div>
 
       <h2>Which Excel Layout Should I Use?</h2>
       <ul>
         <li><strong>Standard</strong> — Best for most users. Single amount column with +/− signs, all columns included.</li>
-        <li><strong>Split Columns (Chase style)</strong> — Separate Withdrawals and Deposits columns, matching what Chase and many US banks produce natively.</li>
-        <li><strong>Accountant View</strong> — Absolute values with DR/CR labels. Running balance prominent. Ideal for bookkeeping and reconciliation.</li>
-        <li><strong>Minimal Clean</strong> — Date, description, amount only. Perfect for importing into other tools with no extra columns.</li>
+        <li><strong>Split Columns (Chase style)</strong> — Separate Withdrawals and Deposits columns.</li>
+        <li><strong>Accountant View</strong> — Absolute values with DR/CR labels. Ideal for bookkeeping and reconciliation.</li>
+        <li><strong>Minimal Clean</strong> — Date, description, amount only. Perfect for importing into other tools.</li>
       </ul>
 
       <div class="callout callout-yellow">
         <strong>Important:</strong> This tool requires text-based PDFs. Scanned or image-based PDFs cannot be parsed. Most modern bank statements downloaded from online banking are text-based and will work correctly.
       </div>
 
-      <h2>CSV vs Excel Format — Which Should You Use?</h2>
-      <table>
-        <thead><tr><th>Format</th><th>Best For</th><th>Opens In</th></tr></thead>
-        <tbody>
-          <tr><td><strong>CSV</strong></td><td>Maximum compatibility</td><td>Excel, Google Sheets, Numbers, any accounting software</td></tr>
-          <tr><td><strong>.xlsx</strong></td><td>Direct editing with formatting</td><td>Microsoft Excel, LibreOffice</td></tr>
-          <tr><td><strong>JSON</strong></td><td>Developers, importing into other apps</td><td>Any code editor or JSON viewer</td></tr>
-        </tbody>
-      </table>
-
-      <div class="callout callout-green">
-        <strong>Tip:</strong> Once open in Excel, use <strong>Data → Filter</strong> to filter by category, or create a PivotTable to summarize spending by month.
-      </div>
+      <h2>More Guides</h2>
+      <ul>
+        <li><a href="seo/convert-bank-statement-to-excel.html">How to convert a bank statement to Excel — step-by-step</a></li>
+        <li><a href="seo/bank-statement-to-csv.html">Bank statement to CSV — guide for Excel, Xero, MYOB &amp; QuickBooks</a></li>
+        <li><a href="seo/import-bank-statement-into-excel.html">Importing bank statements into Excel — all methods explained</a></li>
+        <li><a href="seo/pdf-bank-statement-to-spreadsheet.html">PDF bank statement to spreadsheet — complete guide</a></li>
+      </ul>
     </article>
 
     <div class="ad-slot ad-banner">Advertisement</div>
@@ -416,49 +299,6 @@
 <script src="js/utils.js"></script>
 <script src="js/converter.js"></script>
 <script src="js/layout.js"></script>
-
-<script>
-  // Sync layout button names with preview header
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.layout-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var name = btn.querySelector('.lb-name').textContent;
-        var el = document.getElementById('preview-layout-name');
-        if (el) el.textContent = name;
-      });
-    });
-
-    // Auto-apply layout presets to customiser checkboxes
-    document.querySelectorAll('.layout-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var layout = btn.dataset.layout;
-        var presets = {
-          standard:   { ref:true,  currency:true,  balance:true,  type:true,  category:true,  totalsRow:true,  columnTotals:true,  amount:'single',   totals:'footer' },
-          split:      { ref:true,  currency:true,  balance:true,  type:false, category:true,  totalsRow:true,  columnTotals:true,  amount:'split',    totals:'both'   },
-          accountant: { ref:true,  currency:false, balance:true,  type:false, category:false, totalsRow:true,  columnTotals:true,  amount:'absolute', totals:'both'   },
-          minimal:    { ref:false, currency:false, balance:false, type:false, category:false, totalsRow:false, columnTotals:false, amount:'single',   totals:'stats'  },
-        };
-        var p = presets[layout];
-        if (!p) return;
-
-        // Set checkboxes
-        ['ref','currency','balance','type','category','totalsRow','columnTotals'].forEach(function(k) {
-          var el = document.getElementById('col-' + k);
-          if (el && p[k] !== undefined) el.checked = p[k];
-          if (el) el.dispatchEvent(new Event('change'));
-        });
-
-        // Set amount radio
-        var ar = document.querySelector('input[name="amountDisplay"][value="' + p.amount + '"]');
-        if (ar) { ar.checked = true; ar.dispatchEvent(new Event('change')); }
-
-        // Set totals radio
-        var tr = document.querySelector('input[name="totalsDisplay"][value="' + p.totals + '"]');
-        if (tr) { tr.checked = true; tr.dispatchEvent(new Event('change')); }
-      });
-    });
-  });
-</script>
 
 </body>
 </html>

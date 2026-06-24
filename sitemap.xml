@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yourdomain.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://yourdomain.com/pages/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://yourdomain.com/pages/faq.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://yourdomain.com/pages/banks.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://yourdomain.com/pages/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://yourdomain.com/pages/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Core pages -->
+  <url>
+    <loc>https://statementexcel.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/pages/how-it-works.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/pages/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/pages/banks.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/pages/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/pages/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- SEO long-tail pages -->
+  <url>
+    <loc>https://statementexcel.com/seo/convert-bank-statement-to-excel.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/seo/bank-statement-to-csv.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/seo/import-bank-statement-into-excel.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/seo/pdf-bank-statement-to-spreadsheet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statementexcel.com/seo/bank-statement-converter-free.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>

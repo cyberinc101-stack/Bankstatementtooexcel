@@ -1,4 +1,4 @@
-// Toast
+// Toast notifications
 window.showToast = function (msg, type) {
   var tc = document.getElementById('toast-container');
   if (!tc) return;
@@ -17,7 +17,7 @@ window.fmtBytes = function (b) {
   return (b / 1048576).toFixed(2) + ' MB';
 };
 
-// Format currency
+// Format currency (currency-agnostic symbol — uses $, override if needed)
 window.fmtCurrency = function (n) {
   if (n === null || n === undefined || n === '') return '';
   var num = parseFloat(String(n).replace(/[^0-9.\-]/g, ''));
@@ -25,7 +25,7 @@ window.fmtCurrency = function (n) {
   return (num >= 0 ? '' : '-') + '$' + Math.abs(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-// Generate Excel (CSV compatible .xlsx via simple CSV blob)
+// Download CSV (basic — used as fallback; converter.js has the layout-aware version)
 window.downloadCSV = function (rows, filename) {
   var header = ['Date', 'Description', 'Amount', 'Balance', 'Type', 'Category'];
   var lines  = [header];
@@ -34,7 +34,7 @@ window.downloadCSV = function (rows, filename) {
       r.date || '',
       '"' + (r.description || '').replace(/"/g, '""') + '"',
       r.amount || '',
-      r.balance || '',
+      r.balance != null ? r.balance : '',
       r.type || '',
       r.category || '',
     ]);
@@ -62,7 +62,7 @@ window.downloadJSON = function (data, filename) {
   window.showToast('JSON downloaded!', 'success');
 };
 
-// Read file as text (for PDF text extraction fallback)
+// Read file as text
 window.readFileText = function (file) {
   return new Promise(function (res, rej) {
     var fr = new FileReader();

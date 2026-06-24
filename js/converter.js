@@ -1,6 +1,5 @@
-/* StatementExcel — core converter v3
+/* StatementExcel — core converter v3.1
  * PDF → Claude API → JSON → Layout picker → CSV/Excel download
- * Fixes: CORS headers, PDF mime detection, max_tokens, error handling
  */
 (function () {
   'use strict';
@@ -67,9 +66,39 @@
         document.querySelectorAll('.layout-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         state.layout = btn.dataset.layout;
+        // Update preview label
+        var nameEl = $('preview-layout-name');
+        if (nameEl) nameEl.textContent = btn.querySelector('.lb-name').textContent;
+        // Apply presets
+        applyLayoutPreset(state.layout);
         if (state.transactions.length) renderResults(state.transactions);
       });
     });
+  }
+
+  function applyLayoutPreset(layout) {
+    var presets = {
+      standard:   { ref:true,  currency:true,  balance:true,  type:true,  category:true,  totalsRow:true,  columnTotals:true,  amount:'single',   totals:'footer' },
+      split:      { ref:true,  currency:true,  balance:true,  type:false, category:true,  totalsRow:true,  columnTotals:true,  amount:'split',    totals:'both'   },
+      accountant: { ref:true,  currency:false, balance:true,  type:false, category:false, totalsRow:true,  columnTotals:true,  amount:'absolute', totals:'both'   },
+      minimal:    { ref:false, currency:false, balance:false, type:false, category:false, totalsRow:false, columnTotals:false, amount:'single',   totals:'stats'  },
+    };
+    var p = presets[layout];
+    if (!p) return;
+
+    ['ref','currency','balance','type','category','totalsRow','columnTotals'].forEach(function(k) {
+      var el = $('col-' + k);
+      if (el && p[k] !== undefined) {
+        el.checked = p[k];
+        state.columns[k] = p[k];
+      }
+    });
+
+    var ar = document.querySelector('input[name="amountDisplay"][value="' + p.amount + '"]');
+    if (ar) { ar.checked = true; state.amountDisplay = p.amount; }
+
+    var tr = document.querySelector('input[name="totalsDisplay"][value="' + p.totals + '"]');
+    if (tr) { tr.checked = true; state.totalsDisplay = p.totals; }
   }
 
   // ── COLUMN CUSTOMIZER ─────────────────────────────
@@ -113,6 +142,10 @@
         e.preventDefault(); els.dropzone.classList.remove('over');
         var f = e.dataTransfer.files[0]; if (f) setFile(f);
       });
+      // Click-to-browse
+      els.dropzone.addEventListener('click', function (e) {
+        if (e.target !== els.fileInput) els.fileInput && els.fileInput.click();
+      });
     }
     if (els.fileInput) {
       els.fileInput.addEventListener('change', function () {
@@ -123,8 +156,8 @@
     if (els.badgeRemove) els.badgeRemove.addEventListener('click', clearFile);
     if (els.clearBtn)    els.clearBtn.addEventListener('click', clearAll);
     if (els.convertBtn)  els.convertBtn.addEventListener('click', startConvert);
-    if (els.dlCsv)   els.dlCsv.addEventListener('click', function () { downloadBuiltCSV(getBaseName() + '.csv'); });
-    if (els.dlJson)  els.dlJson.addEventListener('click', function () { window.downloadJSON(state.transactions, getBaseName() + '.json'); });
+    if (els.dlCsv)   els.dlCsv.addEventListener('click',   function () { downloadBuiltCSV(getBaseName() + '.csv'); });
+    if (els.dlJson)  els.dlJson.addEventListener('click',  function () { window.downloadJSON(state.transactions, getBaseName() + '.json'); });
     if (els.dlExcel) els.dlExcel.addEventListener('click', function () { downloadBuiltCSV(getBaseName() + '.csv'); });
     if (els.apiInput) {
       els.apiInput.addEventListener('input', function () { state.apiKey = els.apiInput.value.trim(); saveApiKey(); });
@@ -275,7 +308,6 @@
       if (!res.ok) {
         return res.json().then(function (e) {
           var msg = (e.error && e.error.message) || ('API error ' + res.status);
-          // Friendly messages for common errors
           if (res.status === 401) msg = 'Invalid API key. Check your key at console.anthropic.com.';
           if (res.status === 429) msg = 'Rate limit or no credits. Check your Anthropic account.';
           if (res.status === 413) msg = 'PDF too large. Try splitting into smaller files or single-month statements.';
@@ -284,20 +316,15 @@
       }
       return res.json();
     }).then(function (data) {
-      // Check for stop_reason
       if (data.stop_reason === 'max_tokens') {
         window.showToast('⚠ Response was truncated — statement may be very long. Results may be partial.', 'error');
       }
       var text = '';
       if (data.content && data.content[0]) text = data.content[0].text || '';
-      // Strip markdown fences if present
       text = text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/i, '').trim();
-      // Find first [ to last ] in case of any preamble
       var start = text.indexOf('[');
       var end   = text.lastIndexOf(']');
-      if (start !== -1 && end !== -1) {
-        text = text.substring(start, end + 1);
-      }
+      if (start !== -1 && end !== -1) text = text.substring(start, end + 1);
       try {
         var parsed = JSON.parse(text);
         if (!Array.isArray(parsed)) throw new Error('Expected array');
@@ -319,7 +346,6 @@
     if (els.resultCount) els.resultCount.textContent = rows.length + ' transaction' + (rows.length !== 1 ? 's' : '') + ' found';
     if (els.previewInfo) els.previewInfo.textContent = getBaseName() + ' · preview (first 8 rows) — download for all ' + rows.length;
 
-    var income = 0, expenses = 0;
     var showRef      = state.columns.ref;
     var showCurrency = state.columns.currency;
     var showBalance  = state.columns.balance;
@@ -359,13 +385,11 @@
       var preview = rows.slice(0, 8);
       els.resultBody.innerHTML = '';
 
-      var theadEl = els.resultBody.closest('table').querySelector('thead');
+      var theadEl = els.resultBody.closest('table') && els.resultBody.closest('table').querySelector('thead');
       if (theadEl) theadEl.innerHTML = thead;
 
       preview.forEach(function (r) {
         var amt = parseFloat(r.amount) || 0;
-        if (amt > 0) income += amt; else expenses += Math.abs(amt);
-
         var row = '<tr>';
         row += '<td>' + escHtml(r.date || '') + '</td>';
         if (showRef) row += '<td style="color:var(--text-muted);font-size:.8rem">' + escHtml(r.ref || '') + '</td>';
@@ -394,7 +418,7 @@
       // Footer totals rows
       var showColumnTotals = state.columns.columnTotals;
       if (showTotals && (state.totalsDisplay === 'footer' || state.totalsDisplay === 'both')) {
-        var colCount = 2; // date + desc
+        var colCount = 2;
         if (showRef) colCount++;
         if (showCurrency) colCount++;
         if (amtMode === 'split') colCount += 2; else colCount++;
@@ -405,7 +429,6 @@
         var baseStyle = 'font-weight:700;background:var(--bg)';
         var labelStyle = 'text-align:right;color:var(--text-secondary);font-size:.85rem';
 
-        // Use all-rows totals for footer
         var allIncome = 0, allExpenses = 0;
         rows.forEach(function(r) { var a = parseFloat(r.amount)||0; if(a>0) allIncome+=a; else allExpenses+=Math.abs(a); });
 
@@ -460,14 +483,14 @@
   // ── CSV DOWNLOAD (layout-aware) ────────────────────
   function downloadBuiltCSV(filename) {
     var rows = state.transactions;
-    var showRef      = state.columns.ref;
-    var showCurrency = state.columns.currency;
-    var showBalance  = state.columns.balance;
-    var showType     = state.columns.type;
-    var showCategory = state.columns.category;
+    var showRef          = state.columns.ref;
+    var showCurrency     = state.columns.currency;
+    var showBalance      = state.columns.balance;
+    var showType         = state.columns.type;
+    var showCategory     = state.columns.category;
     var showTotals       = state.columns.totalsRow;
     var showColumnTotals = state.columns.columnTotals;
-    var amtMode      = state.amountDisplay;
+    var amtMode          = state.amountDisplay;
 
     var header = ['Date'];
     if (showRef)      header.push('Ref');
@@ -506,28 +529,24 @@
     });
 
     if (showTotals) {
-      var amtIdx = 1; // after Date
+      var amtIdx = 1;
       if (showRef) amtIdx++;
-      amtIdx++; // Description
+      amtIdx++;
       if (showCurrency) amtIdx++;
 
       if (showColumnTotals && amtMode === 'split') {
         var expRow = new Array(header.length).fill('');
-        expRow[0] = 'TOTAL EXPENSES';
-        expRow[amtIdx] = totalExpenses.toFixed(2);
+        expRow[0] = 'TOTAL EXPENSES'; expRow[amtIdx] = totalExpenses.toFixed(2);
         lines.push(expRow);
         var depRow = new Array(header.length).fill('');
-        depRow[0] = 'TOTAL DEPOSITS';
-        depRow[amtIdx + 1] = totalIncome.toFixed(2);
+        depRow[0] = 'TOTAL DEPOSITS'; depRow[amtIdx + 1] = totalIncome.toFixed(2);
         lines.push(depRow);
       } else if (showColumnTotals) {
         var expRow2 = new Array(header.length).fill('');
-        expRow2[0] = 'TOTAL EXPENSES';
-        expRow2[amtIdx] = totalExpenses.toFixed(2);
+        expRow2[0] = 'TOTAL EXPENSES'; expRow2[amtIdx] = totalExpenses.toFixed(2);
         lines.push(expRow2);
         var depRow2 = new Array(header.length).fill('');
-        depRow2[0] = 'TOTAL DEPOSITS';
-        depRow2[amtIdx] = totalIncome.toFixed(2);
+        depRow2[0] = 'TOTAL DEPOSITS'; depRow2[amtIdx] = totalIncome.toFixed(2);
         lines.push(depRow2);
       } else {
         var totalsRow = new Array(header.length).fill('');
